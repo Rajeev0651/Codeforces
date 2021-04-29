@@ -30,7 +30,8 @@ void solve()
   int ans = 0, p;
   FOR(i, 1, k)
   {
-    if (C[i] < D[E[C[i]]])
+    //cout << A[C[i]] << " " << D[E[C[i]]] << "\n";
+    if (A[C[i]] < D[E[C[i]]])
       ans++;
   }
   cout << ans << "\n";
