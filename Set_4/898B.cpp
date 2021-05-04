@@ -7,34 +7,35 @@ using namespace std;
 #define FOR(i, a, b) for (auto i = a; i <= b; i++)
 #define FOREV(i, a, b) for (auto i = a; i >= b; i--)
 
-int fun(int N)
-{
-  int sum = 0;
-  while (N)
-  {
-    sum += (N % 10);
-    N /= 10;
-  }
-  return sum;
-}
 void solve()
 {
-  int ans[10000], count = 0;
-  int N;
-  for (int i = 19; count < 10000; i++)
+  ll N, a, b;
+  cin >> N >> a >> b;
+  if ((N % __gcd(a, b)) == 0)
   {
-    if (fun(i) == 10)
+    for (int i = 0; i <= N; i++)
     {
-      ans[count++] = i;
+      ll x = (N - (b * i));
+      if (x % a == 0 && x >= 0)
+      {
+        cout << "YES\n";
+        cout << x / a << " " << i << "\n";
+        return;
+      }
     }
+    cout << "NO\n";
   }
-  cin >> N;
-  cout << ans[N - 1];
+  else
+  {
+    cout << "NO\n";
+    return;
+  }
 }
 
 int main()
 {
   ios_base::sync_with_stdio(0), cin.tie(0), cout.tie(0);
   solve();
+
   return 0;
 }
