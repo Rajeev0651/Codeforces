@@ -9,27 +9,33 @@ using namespace std;
 
 void solve()
 {
-  int N;
+  ll N, count = 0, x = 1, p = 0;
   cin >> N;
-  int A[N], B[N], val;
-  B[N - 1] = 0;
-  FOR(i, 0, N - 1)
-  cin >> A[i];
-  for (int i = N - 2; i >= 0; i--)
+  while (1)
   {
-    val = INT_MAX;
-    for (int j = i + 1, k = 1; j < N, k <= A[i]; j++, k++)
+    p = (x * x) + (2 * p);
+    x *= 2;
+    if (p <= N)
     {
-      val = min(val, B[j]);
+      count++;
+      N -= p;
     }
-    B[i] = val + 1;
+
+    else if (p > N)
+      break;
+    //cout << p << "\n";
   }
-  cout << B[0] << "\n";
+  cout << count << "\n";
 }
 
 int main()
 {
   ios_base::sync_with_stdio(0), cin.tie(0), cout.tie(0);
-  solve();
+  int T;
+  cin >> T;
+  while (T--)
+  {
+    solve();
+  }
   return 0;
 }

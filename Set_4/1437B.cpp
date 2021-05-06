@@ -11,25 +11,27 @@ void solve()
 {
   int N;
   cin >> N;
-  int A[N], B[N], val;
-  B[N - 1] = 0;
-  FOR(i, 0, N - 1)
-  cin >> A[i];
-  for (int i = N - 2; i >= 0; i--)
+  string S, T;
+  cin >> S;
+  int count1 = 0, count2 = 0;
+  for (int i = 0; i < N - 1; i++)
   {
-    val = INT_MAX;
-    for (int j = i + 1, k = 1; j < N, k <= A[i]; j++, k++)
-    {
-      val = min(val, B[j]);
-    }
-    B[i] = val + 1;
+    if (S[i] == '1' && S[i + 1] == '1')
+      count1++;
+    if (S[i] == '0' && S[i + 1] == '0')
+      count2++;
   }
-  cout << B[0] << "\n";
+  cout << max(count1, count2) << "\n";
 }
 
 int main()
 {
   ios_base::sync_with_stdio(0), cin.tie(0), cout.tie(0);
-  solve();
+  int T;
+  cin >> T;
+  while (T--)
+  {
+    solve();
+  }
   return 0;
 }
