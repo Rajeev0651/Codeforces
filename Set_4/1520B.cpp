@@ -19,12 +19,20 @@ void solve()
     d /= 10;
   }
   string p = to_string(N);
+  string k;
+  for (int i = 1; i <= p.length(); i++)
+  {
+    k += p[0];
+  }
+  int val = stoi(k);
   if (p.length() > 1)
   {
-    if (p[0] < p[1])
+    if (val <= N)
+    {
       ans += (p[0] - 48);
+    }
     else
-      ans += (p[0] - 48) - 1;
+      ans += (p[0] - 48 - 1);
     ans += (digit - 1) * 9;
     cout << ans << "\n";
   }
