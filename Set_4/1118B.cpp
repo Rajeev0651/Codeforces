@@ -12,25 +12,57 @@ void solve()
   int N;
   cin >> N;
   int A[N];
-  int even = 0, odd = 0;
+  int even[N + 1], odd[N + 1], e = 0, o = 0;
   FOR(i, 0, N - 1)
   {
     cin >> A[i];
-    if (A[i] % 2 == 0)
-      even += A[i];
+    if (i % 2 == 0)
+      e += A[i];
     else
-      odd += A[i];
+      o += A[i];
+    even[i] = e;
+    odd[i] = o;
   }
-  int ans = 0;
-  for (int i = 0; i < N; i++)
+  int oddr[N], evenr[N];
+  e = o = 0;
+  for (int i = N - 1; i >= 0; i--)
   {
     if (i % 2 == 0)
+      e += A[i];
+    else
+      o += A[i];
+    evenr[i] = e;
+    oddr[i] = o;
+  }
+  int ans = 0, x, y, p, q, r, s;
+  for (int i = 0; i < N; i++)
+  {
+    if (i - 1 < 0)
     {
-      if ((odd - A[i]) == even)
-        ans++;
+      p = 0;
+      r = 0;
     }
-    else if ((even - A[i]) == odd)
+    else
+    {
+      p = even[i - 1];
+      r = odd[i - 1];
+    }
+    if (i + 1 >= N)
+    {
+      q = 0;
+      s = 0;
+    }
+    else
+    {
+      q = oddr[i + 1];
+      s = evenr[i + 1];
+    }
+    x = p + q;
+    y = r + s;
+    if (x == y)
+    {
       ans++;
+    }
   }
   cout << ans << "\n";
 }
