@@ -9,7 +9,7 @@
         {
             "type": "shell",
             "label": "g++.exe build active file",
-            "command": "C:\\MinGW\\bin\\g++.exe",
+            "command": "/usr/bin/gcc",
             "args": [
                 "-g",
                 "${file}",
@@ -17,7 +17,7 @@
                 "${fileDirname}\\${fileBasenameNoExtension}.exe"
             ],
             "options": {
-                "cwd": "C:\\MinGW\\bin"
+                "cwd": "user/bin/gcc"
             },
             "problemMatcher": ["$gcc"],
             "group": {
